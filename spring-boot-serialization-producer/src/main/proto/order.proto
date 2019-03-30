@@ -1,5 +1,5 @@
 syntax = "proto3";
-package com.article.springbootserialization.proto;
+package com.hendisantika.springbootprotobuf.springbootserialization.proto;
 
 option java_outer_classname = "OrdersProto";
 
