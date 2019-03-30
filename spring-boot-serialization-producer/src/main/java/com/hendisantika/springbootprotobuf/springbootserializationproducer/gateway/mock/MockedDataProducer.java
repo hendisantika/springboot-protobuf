@@ -76,4 +76,48 @@ public class MockedDataProducer implements OrderGateway {
         return orderCollection;
     }
 
+    @Override
+    public OrdersProto.Orders protobufOrders(int totalElements) {
+        final OrdersProto.Orders.Builder orders = OrdersProto.Orders.newBuilder();
+
+        IntStream.range(0, totalElements)
+                .forEach(
+                        iteration -> {
+                            final OrdersProto.Product product1 =
+                                    OrdersProto.Product.newBuilder()
+                                            .setId(ID_PRODUCT_1)
+                                            .setProductType(OrdersProto.Product.ProductType.COMMON)
+                                            .setPriceInCents(new Random().nextInt(PRICE_IN_CENTS))
+                                            .build();
+
+                            final OrdersProto.Product product2 =
+                                    OrdersProto.Product.newBuilder()
+                                            .setId(ID_PRODUCT_2)
+                                            .setProductType(OrdersProto.Product.ProductType.COMMON)
+                                            .setPriceInCents(new Random().nextInt(PRICE_IN_CENTS))
+                                            .build();
+
+                            final OrdersProto.Product product3 =
+                                    OrdersProto.Product.newBuilder()
+                                            .setId(ID_PRODUCT_3)
+                                            .setProductType(OrdersProto.Product.ProductType.GIFT)
+                                            .setPriceInCents(new Random().nextInt(PRICE_IN_CENTS))
+                                            .build();
+
+                            final OrdersProto.Person person = OrdersProto.Person.newBuilder().setName(PERSON_NAME).build();
+
+                            final OrdersProto.Order order =
+                                    OrdersProto.Order.newBuilder()
+                                            .setOrderId(String.valueOf(INITIAL_ORDER_ID + iteration))
+                                            .setPerson(person)
+                                            .addProduct(product1)
+                                            .addProduct(product2)
+                                            .addProduct(product3)
+                                            .build();
+                            orders.addOrders(order);
+                        });
+
+        return orders.build();
+    }
+
 }
