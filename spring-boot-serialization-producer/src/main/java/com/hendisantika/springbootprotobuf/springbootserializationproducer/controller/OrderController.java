@@ -35,4 +35,17 @@ public class OrderController {
         log.info("Total time in milliseconds getOrdersProto: {}", stopWatch.getLastTaskTimeMillis());
         return ResponseEntity.ok(protobufOrders);
     }
+
+
+    @GetMapping("/order/{totalElement}")
+    public ResponseEntity<Collection<Order>> getOrders(@PathVariable int totalElement) {
+        final StopWatch stopWatch = new StopWatch();
+        stopWatch.start("getOrders");
+
+        final Collection<Order> orders = orderService.getOrders(totalElement);
+
+        stopWatch.stop();
+        log.info("Total time in milliseconds getOrders: {}", stopWatch.getLastTaskTimeMillis());
+        return ResponseEntity.ok(orders);
+    }
 }
