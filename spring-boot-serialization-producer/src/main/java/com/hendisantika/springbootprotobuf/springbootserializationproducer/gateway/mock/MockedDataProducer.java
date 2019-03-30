@@ -5,6 +5,7 @@ import com.hendisantika.springbootprotobuf.springbootserializationproducer.domai
 import com.hendisantika.springbootprotobuf.springbootserializationproducer.domain.Product;
 import com.hendisantika.springbootprotobuf.springbootserializationproducer.domain.ProductType;
 import com.hendisantika.springbootprotobuf.springbootserializationproducer.gateway.OrderGateway;
+import com.hendisantika.springbootprotobuf.springbootserializationproducer.proto.OrdersProto;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,7 @@ import java.util.stream.IntStream;
 @Component
 @Service
 public class MockedDataProducer implements OrderGateway {
-
+    private static final int PRICE_IN_CENTS = 100000;
     private static final int INITIAL_ORDER_ID = 10000000;
     private static final String PERSON_NAME = "John Conceição";
     private static final String ID_PRODUCT_1 = "XXX-2121-333-11";

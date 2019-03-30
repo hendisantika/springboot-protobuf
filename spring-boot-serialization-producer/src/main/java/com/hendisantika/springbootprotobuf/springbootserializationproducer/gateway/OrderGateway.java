@@ -1,6 +1,7 @@
 package com.hendisantika.springbootprotobuf.springbootserializationproducer.gateway;
 
 import com.hendisantika.springbootprotobuf.springbootserializationproducer.domain.Order;
+import com.hendisantika.springbootprotobuf.springbootserializationproducer.proto.OrdersProto;
 
 import java.util.Collection;
 

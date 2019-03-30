@@ -2,6 +2,7 @@ package com.hendisantika.springbootprotobuf.springbootserializationproducer.serv
 
 import com.hendisantika.springbootprotobuf.springbootserializationproducer.domain.Order;
 import com.hendisantika.springbootprotobuf.springbootserializationproducer.gateway.OrderGateway;
+import com.hendisantika.springbootprotobuf.springbootserializationproducer.proto.OrdersProto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
