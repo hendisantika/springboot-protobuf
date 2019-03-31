@@ -1,10 +1,12 @@
 package com.hendisantika.springbootprotobuf.springbootserializationconsumer.controller;
 
+import com.googlecode.protobuf.format.JsonFormat;
 import com.hendisantika.springbootprotobuf.springbootserializationconsumer.domain.Order;
 import com.hendisantika.springbootprotobuf.springbootserializationconsumer.proto.OrdersProto;
 import com.hendisantika.springbootprotobuf.springbootserializationconsumer.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,6 +56,19 @@ public class ConsumerController {
         return protobufOrders;
     }
 
+    @GetMapping(value = "/order/proto/formatted/{totalElement}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<String> getFormattedOrdersProto(@PathVariable int totalElement) {
+        final StopWatch stopWatch = new StopWatch();
+        stopWatch.start("getFormattedOrdersProto");
+
+        final OrdersProto.Orders defaultInstance = orderService.getProtobufOrders(totalElement);
+
+        stopWatch.stop();
+        log.info("Total time in milliseconds getFormattedOrdersProto: {}", stopWatch.getLastTaskTimeMillis());
+
+        final JsonFormat jsonFormat = new JsonFormat();
+        return ResponseEntity.ok(jsonFormat.printToString(defaultInstance));
+    }
 
 
 }
