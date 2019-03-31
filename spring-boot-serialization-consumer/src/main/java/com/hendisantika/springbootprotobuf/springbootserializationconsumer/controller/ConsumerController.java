@@ -1,6 +1,7 @@
 package com.hendisantika.springbootprotobuf.springbootserializationconsumer.controller;
 
 import com.hendisantika.springbootprotobuf.springbootserializationconsumer.domain.Order;
+import com.hendisantika.springbootprotobuf.springbootserializationconsumer.proto.OrdersProto;
 import com.hendisantika.springbootprotobuf.springbootserializationconsumer.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +40,18 @@ public class ConsumerController {
         log.info("Total time in milliseconds getOrders: {}", stopWatch.getLastTaskTimeMillis());
 
         return ResponseEntity.ok(orders);
+    }
+
+    @GetMapping(value = "/order/proto/{totalElement}")
+    public OrdersProto.Orders getOrdersProto(@PathVariable int totalElement) {
+        final StopWatch stopWatch = new StopWatch();
+        stopWatch.start("getOrdersProto");
+
+        final OrdersProto.Orders protobufOrders = orderService.getProtobufOrders(totalElement);
+
+        stopWatch.stop();
+        log.info("Total time in milliseconds getOrdersProto: {}", stopWatch.getLastTaskTimeMillis());
+        return protobufOrders;
     }
 
 
