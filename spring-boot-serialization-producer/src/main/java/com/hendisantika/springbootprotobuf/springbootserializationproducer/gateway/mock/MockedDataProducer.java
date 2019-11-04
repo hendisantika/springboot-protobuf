@@ -30,7 +30,7 @@ import java.util.stream.IntStream;
 public class MockedDataProducer implements OrderGateway {
     private static final int PRICE_IN_CENTS = 100000;
     private static final int INITIAL_ORDER_ID = 10000000;
-    private static final String PERSON_NAME = "John Conceição";
+    private static final String PERSON_NAME = "Uzumaki Naruto";
     private static final String ID_PRODUCT_1 = "XXX-2121-333-11";
     private static final String ID_PRODUCT_2 = "YYY-3333-121-21";
     private static final String ID_PRODUCT_3 = "941-6957-219-41";
