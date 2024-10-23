@@ -20,7 +20,7 @@
 
     <properties>
         <java.version>17</java.version>
-        <os-maven-plugin.version>1.5.0.Final</os-maven-plugin.version>
+        <os-maven-plugin.version>1.7.1</os-maven-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <protobuf-java.version>3.25.5</protobuf-java.version>
