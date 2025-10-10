@@ -1,6 +1,5 @@
 package com.hendisantika.springbootprotobuf.springbootserializationproducer.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
@@ -13,10 +12,14 @@ import lombok.Getter;
  * Time: 05:59
  */
 @Getter
-@AllArgsConstructor
 public enum ProductType {
 
     GIFT(0),
     COMMON(1);
-    private int type;
+
+    private final int type;
+
+    ProductType(int type) {
+        this.type = type;
+    }
 }
